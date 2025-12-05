@@ -4,6 +4,26 @@ products = [
     {'name': 'Sting', 'price': 12000, 'qty': 10},
     {'name': '7Up', 'price': 13000, 'qty': 18}
 ]
+def add_product():   # không có tham số vì sẽ input bên trong
+    name = input("Nhập tên sản phẩm: ").strip()
+    if not name:
+        print("Tên sản phẩm không được để trống.")
+        return
+
+    try:
+        price = int(input("Nhập giá bán: ").strip())
+        quantity = int(input("Nhập số lượng tồn kho: ").strip())
+    except ValueError:
+        print("Giá và số lượng phải là số nguyên. Thao tác bị hủy.")
+        return
+
+    product = {
+        'name': name,
+        'price': price,
+        'qty': quantity
+    }
+    products.append(product)
+    print(f">>> Đã thêm: {name} - {price}đ - SL: {quantity}")
 def main():
     while True:
         print("\n--- QUẢN LÝ KHO HÀNG ---")
@@ -12,7 +32,9 @@ def main():
         print("3. Cảnh báo hết hàng")
         print("4. Thoát")
         choice = input("Chọn chức năng: ")
-        if choice == '4':
+        if choice == '1':
+            add_product()
+        elif choice == '4':
             print("Kết thúc chương trình.")
             break
         else:
