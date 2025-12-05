@@ -24,6 +24,14 @@ def add_product():   # không có tham số vì sẽ input bên trong
     }
     products.append(product)
     print(f">>> Đã thêm: {name} - {price}đ - SL: {quantity}")
+def view_inventory():
+    print("\n--- DANH SÁCH SẢN PHẨM TRONG KHO ---")
+    if not products:
+        print("Kho đang trống.")
+        return
+    
+    for i, p in enumerate(products, start=1):
+        print(f"{i}. {p['name']} - Giá: {p['price']}đ - SL: {p['qty']}")
 def main():
     while True:
         print("\n--- QUẢN LÝ KHO HÀNG ---")
@@ -34,6 +42,8 @@ def main():
         choice = input("Chọn chức năng: ")
         if choice == '1':
             add_product()
+        elif choice == '2':
+            view_inventory()
         elif choice == '4':
             print("Kết thúc chương trình.")
             break
